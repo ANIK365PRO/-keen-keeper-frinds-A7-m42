@@ -1,50 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import FriendCard from '../ui/FriendCard';
+import useFriends from '../../hooks/useFriends';
+import Loading from '../ui/Loading';
 
-// const friendsPromise = fetch('/FriendsData.json').then(res=>res.json())
+
 
 const Friends = () => {
-    // const friendsArray = use(friendsPromise)
-    // console.log(friendsArray)
 
-    const [friends, setFriends] = useState([])
-    const [loading, setLoading] = useState(true)
+    // const [friends, setFriends] = useState([])
+    // const [loading, setLoading] = useState(true)
 
 
+    // useEffect( ()=>{
 
-    useEffect( ()=>{
-
-        const fetchFriends = async() => {
-            const res = await fetch('/FriendsData.json');
-            const data = await res.json()
+    //     const fetchFriends = async() => {
+    //         const res = await fetch('/FriendsData.json');
+    //         const data = await res.json()
 
         
-            setTimeout(()=>{
-                // console.log(data)
-                setFriends(data)
-                setLoading(false)
+    //         setTimeout(()=>{
+    //             // console.log(data)
+    //             setFriends(data)
+    //             setLoading(false)
 
-            }, 2000)
+    //         }, 2000)
 
-        }
+    //     }
 
 
-        fetchFriends()
-    },[])
+    //     fetchFriends()
+    // },[])
+
     
-    console.log(friends, loading)
+    const {friends, loading} = useFriends()
+    // console.log(friends, loading)
 
    
     
 
     return ( loading ? 
 
-            (<div className='font-bold text-7xl text-center'> LOADING..........</div>) :
+            <Loading></Loading> :
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 items-center justify-center'>
                 {
 
-                    friends.slice(0,8).map(friend => <FriendCard key={friend.id} friend={friend}></FriendCard>)
+                    friends.map(friend => <FriendCard key={friend.id} friend={friend}></FriendCard>)
                     
                 }
             

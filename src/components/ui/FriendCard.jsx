@@ -5,6 +5,7 @@ const FriendCard = ({friend}) => {
     // console.log(friend, 'FriendCard')
     return (
         <Link to={`/friendDetails/${friend.id}`}>
+            
              <div className="card bg-white/50 backdrop-blur-xl border border-gray-200  shadow-lg pt-10">
             <figure className=''>
                 <img
@@ -23,7 +24,15 @@ const FriendCard = ({friend}) => {
                     }
                 </div>
                 
-                <div className="badge bg-[#244d3fFF] font-medium text-white items-center p-4 rounded-4xl">{friend.status}</div>
+                <div className={`
+                        badge font-medium  items-center p-4 rounded-4xl text-white
+                        ${friend.status === 'on-track' && ('bg-[#244d3fFF]')}
+                        ${friend.status === 'almost-due' && ('badge-warning')}
+                        ${friend.status === 'over-due' && ('badge-error ')}
+                    
+                    `}
+                    
+                    >{friend.status}</div>
 
             </div>
             </div>

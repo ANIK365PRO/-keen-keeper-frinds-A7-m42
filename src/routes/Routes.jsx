@@ -6,6 +6,7 @@ import StatsPage from "../pages/statsPage/StatsPage";
 import NotFoundPage from "../pages/notFoundPage/NotFoundPage";
 import DashBoardLayout from "../layout/DashBoardLayout";
 import FriendDetails from "../pages/friendDetails/FriendDetails";
+import Loading from "../components/ui/Loading";
 
 
 
@@ -30,7 +31,8 @@ export const router = createBrowserRouter([
       {
         path: '/friendDetails/:Id',
         Component: FriendDetails,
-        loader: () =>  fetch('/FriendsData.json')
+        // loader: () =>  fetch('/FriendsData.json'),
+        // hydrateFallbackElement: <Loading></Loading>
       }
     ],
     errorElement: <NotFoundPage></NotFoundPage>
