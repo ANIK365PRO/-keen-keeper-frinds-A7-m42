@@ -7,7 +7,7 @@ import meetupImg from '../../../assets/meetup.png'
 const TimeLineStatus = ({friend}) => {
 
     const {name, type} = friend
-    console.log(name, type , 'name, type ,')
+    // console.log(name, type , 'name, type ,')
 
     const today = new Date().toLocaleDateString("en-BD", {
         weekday: "long",
