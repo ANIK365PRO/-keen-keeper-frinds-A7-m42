@@ -8,7 +8,7 @@ const TimeLinePage = () => {
 
     return (
         <div>
-             <h2 className='text-2xl text-center'>This is TimeLinePage </h2>
+             <h2 className='text-5xl font-bold '>Timeline </h2>
         </div>
     );
 };

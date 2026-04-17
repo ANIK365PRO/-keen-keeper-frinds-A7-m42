@@ -21,7 +21,7 @@ const FriendDetails = () => {
     const expectedFriend = friends.find(friend => friend.id === Number(Id))
 
     const {quickCheck, handleQuickCheckFriend} = useContext(FriendsContext) //custom Context
-    console.log( 'FriendsContext', quickCheck, handleQuickCheckFriend )
+    // console.log( 'FriendsContext', quickCheck, handleQuickCheckFriend )
 
     // const [quickCheck, setQuickCheck] = useState([])
     // const handleQuickCheckFriend = (currentFriendInfo, type)=>{
@@ -142,7 +142,7 @@ const FriendDetails = () => {
                                 <div className='grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6  '>
                                     
                                     <section 
-                                    className="stats shadow text-center bg-[#f8fafcFF]/50 backdrop-blur-xl border border-gray-200 cursor-pointer hover:scale-103 transition"
+                                    className="stats shadow text-center bg-[#f8fafcFF]/50 hover:bg-[#f8fafcFF]/10 backdrop-blur-xl border border-gray-200 cursor-pointer hover:scale-103 transition"
                                      onClick={()=>handleQuickCheckFriend(expectedFriend, 'call')}>
                                         <div className="stat p-0 py-8 space-y-2">
                                             <div className="stat-value">
@@ -153,7 +153,7 @@ const FriendDetails = () => {
                                     </section>
 
                                     <section 
-                                    className="stats shadow-sm text-center  bg-[#f8fafcFF]/50 backdrop-blur-xl border border-gray-200 cursor-pointer hover:scale-103 transition" 
+                                    className="stats shadow-sm text-center  bg-[#f8fafcFF]/50  hover:bg-[#f8fafcFF]/10 backdrop-blur-xl border border-gray-200 cursor-pointer hover:scale-103 transition" 
                                     onClick={()=>handleQuickCheckFriend(expectedFriend, 'text')}>
                                         <div className="stat p-0 py-8 space-y-2">
                                             <div className="stat-value font-semibold text-3xl"> <img src={textImg} alt="call image" className='mx-auto h-8 w-8'/></div>
@@ -162,7 +162,7 @@ const FriendDetails = () => {
                                     </section>
 
                                     <section 
-                                    className="stats shadow-sm text-center  bg-[#f8fafcFF]/50 backdrop-blur-xl border border-gray-200 cursor-pointer hover:scale-103 transition"
+                                    className="stats shadow-sm text-center  bg-[#f8fafcFF]/50 hover:bg-[#f8fafcFF]/10 backdrop-blur-xl border border-gray-200 cursor-pointer hover:scale-103 transition"
                                     onClick={()=>handleQuickCheckFriend(expectedFriend, 'video')}>
                                         <div className="stat p-0 py-8 space-y-2">
                                             <div className="stat-value font-semibold text-3xl"> <img src={videoImg} alt="call image" className='mx-auto h-8 w-8'/></div>
