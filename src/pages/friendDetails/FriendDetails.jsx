@@ -38,7 +38,7 @@ const FriendDetails = () => {
             <Loading></Loading> :
             <div className='bg-[#f8fafcFF]'>
 
-                <div className=' container mx-auto gap-6 px-4 py-10 md:px-0 md:py-0 md:p-16 lg:p-20 flex flex-col lg:flex-row '>
+                <div className=' container mx-auto gap-6 px-4 py-10 md:p-16 lg:p-20 flex flex-col md:flex-row '>
 
                     {/* right container  */}
                         <section className='md:w-[35%] space-y-4'>
@@ -68,9 +68,9 @@ const FriendDetails = () => {
                                         
                                     </div>
                                     
-                                    <div className="space-x-2">
+                                    <div className="space-x-2 flex">
                                         {
-                                            expectedFriend.tags.map((tag, ind)=> <span key={ind} className='badge badge-outline/20 text-[#244d3fFF] font-medium bg-[#244d3fFF]/20 items-center p-4 rounded-4xl'>{tag}</span>)
+                                            expectedFriend.tags.map((tag, ind)=> <span key={ind} className='badge badge-outline/20 text-[#244d3fFF] font-medium bg-[#244d3fFF]/20  p-4 rounded-4xl '>{tag}</span>)
                                         }
                                     </div>
                                     
@@ -99,25 +99,26 @@ const FriendDetails = () => {
                     {/* left container  */}
                         <section className='flex-1 space-y-6'>
                             
-                            <div className='grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6  '>
+                        {/* top action card      */}
+                            <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6  '>
                                 
                                 <section className="stats shadow text-center bg-white/60 backdrop-blur-xl border border-gray-200 ">
                                     <div className="stat p-0 py-8">
-                                        <div className="stat-value font-semibold text-3xl">{expectedFriend.days_since_contact}</div>
+                                        <div className="stat-value font-semibold text-2xl lg:text-3xl">{expectedFriend.days_since_contact}</div>
                                         <div className="stat-title text-wrap text-lg">Days Since Contact</div>      
                                     </div>
                                 </section>
 
                                 <section className="stats shadow-sm text-center bg-white/60 backdrop-blur-xl border border-gray-200 ">
                                     <div className="stat p-0 py-8">
-                                        <div className="stat-value font-semibold text-3xl">{expectedFriend.goal}</div>
+                                        <div className="stat-value font-semibold text-2xl lg:text-3xl">{expectedFriend.goal}</div>
                                         <div className="stat-title text-wrap text-lg">Goal (Days)</div>                  
                                     </div>              
                                 </section>
 
                                 <section className="stats shadow-sm text-center bg-white/60 backdrop-blur-xl border border-gray-200 ">
                                     <div className="stat p-0 py-8">
-                                        <div className="stat-value font-semibold text-3xl">{expectedFriend.next_due_date}</div>
+                                        <div className="stat-value font-semibold text-2xl lg:3xl">{expectedFriend.next_due_date}</div>
                                         <div className="stat-title text-wrap text-lg">next_due_date</div>                   
                                     </div>
                                 </section>
@@ -135,7 +136,7 @@ const FriendDetails = () => {
                                 </section>
                             </div>
 
-                    {/* call, audio, video btn card*/}
+                        {/* call, audio, video btn card*/}
                             <div className='stats w-full shadow bg-white/60 backdrop-blur-xl border border-gray-200 flex flex-col px-6 py-10 space-y-5'>
                                 <h3 className='text-xl font-medium text-[#244d3fFF]'>Quick Check-In</h3>
 

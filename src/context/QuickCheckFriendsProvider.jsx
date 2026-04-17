@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import { toast } from 'react-toastify';
 
 export const FriendsContext = createContext()
 
@@ -13,6 +14,8 @@ const QuickCheckFriendsProvider = ({children}) => {
                 // console.log(currentFriendInfo,  type)
     
             setQuickCheck([...quickCheck , currentFriend])
+            toast.success(`wow this ${type}, info is add to timeline !` )
+            
         }
 
         const data = {
