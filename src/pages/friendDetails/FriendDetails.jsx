@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
-import { useLoaderData, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import useFriends from '../../hooks/useFriends';
 
 import callImg from '../../assets/call.png'
@@ -11,29 +11,27 @@ import { HiOutlineBellSnooze } from 'react-icons/hi2';
 import { BiBox } from 'react-icons/bi';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import Loading from '../../components/ui/Loading';
+import { FriendsContext } from '../../context/QuickCheckFriendsProvider';
 
 const FriendDetails = () => {
-    
+
     const {Id} = useParams()
-    // const friendsArray = useLoaderData()
+    const {friends, loading} = useFriends()  //custom hooks data
 
-    // const expectedFriend = friendsArray.find(friend => friend.id === Number(Id))
-    // console.log(expectedFriend)
-
-    const {friends, loading} = useFriends()
     const expectedFriend = friends.find(friend => friend.id === Number(Id))
-    // console.log(Id, 'useParams')
-    // console.log(friendsArray, 'useLoaderData')
 
-    const [quickCheck, setQuickCheck] = useState([])
-    const handleQuick = (currentFriendInfo, type)=>{
+    const {quickCheck, handleQuickCheckFriend} = useContext(FriendsContext) //custom Context
+    console.log( 'FriendsContext', quickCheck, handleQuickCheckFriend )
+
+    // const [quickCheck, setQuickCheck] = useState([])
+    // const handleQuickCheckFriend = (currentFriendInfo, type)=>{
          
-    const data = {...currentFriendInfo, type : type}
-        // console.log(currentFriendInfo,  type)
+    // const data = {...currentFriendInfo, type : type}
+    //     // console.log(currentFriendInfo,  type)
 
-        setQuickCheck([...quickCheck , data])
-    }
-    console.log(quickCheck, 'quickCheck')
+    //     setQuickCheck([...quickCheck , data])
+    // }
+    // console.log(quickCheck, 'quickCheck')
 
     return ( 
         loading? 
@@ -145,7 +143,7 @@ const FriendDetails = () => {
                                     
                                     <section 
                                     className="stats shadow text-center bg-[#f8fafcFF]/50 backdrop-blur-xl border border-gray-200 cursor-pointer hover:scale-103 transition"
-                                     onClick={()=>handleQuick(expectedFriend, 'call')}>
+                                     onClick={()=>handleQuickCheckFriend(expectedFriend, 'call')}>
                                         <div className="stat p-0 py-8 space-y-2">
                                             <div className="stat-value">
                                                 <img src={callImg} alt="call image" className='mx-auto h-8 w-8'/>
@@ -156,7 +154,7 @@ const FriendDetails = () => {
 
                                     <section 
                                     className="stats shadow-sm text-center  bg-[#f8fafcFF]/50 backdrop-blur-xl border border-gray-200 cursor-pointer hover:scale-103 transition" 
-                                    onClick={()=>handleQuick(expectedFriend, 'text')}>
+                                    onClick={()=>handleQuickCheckFriend(expectedFriend, 'text')}>
                                         <div className="stat p-0 py-8 space-y-2">
                                             <div className="stat-value font-semibold text-3xl"> <img src={textImg} alt="call image" className='mx-auto h-8 w-8'/></div>
                                             <div className="stat-title text-wrap text-lg">Text</div>                  
@@ -165,7 +163,7 @@ const FriendDetails = () => {
 
                                     <section 
                                     className="stats shadow-sm text-center  bg-[#f8fafcFF]/50 backdrop-blur-xl border border-gray-200 cursor-pointer hover:scale-103 transition"
-                                    onClick={()=>handleQuick(expectedFriend, 'video')}>
+                                    onClick={()=>handleQuickCheckFriend(expectedFriend, 'video')}>
                                         <div className="stat p-0 py-8 space-y-2">
                                             <div className="stat-value font-semibold text-3xl"> <img src={videoImg} alt="call image" className='mx-auto h-8 w-8'/></div>
                                             <div className="stat-title text-wrap text-lg">Video</div>                   
