@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FriendsContext } from '../../context/QuickCheckFriendsProvider';
 
 import TimeLineStatus from '../../components/ui/timeLineStatus/TimeLineStatus';
@@ -9,10 +9,21 @@ const TimeLinePage = () => {
 
     const {quickCheck} = useContext(FriendsContext) //custom Context
             console.log( 'FriendsContext, quickCheck', quickCheck )
+            
+            // const {name, type} = quickCheck   
+            // console.log(name, type) // undefined
+    
+    const [filerInfo, setFilterInfo] = useState([])
+    const handleFilter = (info) =>{
 
-    // const {name, type} = quickCheck    
-    
-    
+        console.log(info, 'filter data')
+        const expectedFilterInfo = quickCheck.filter(data => data.type == info)
+
+        console.log(expectedFilterInfo)
+
+
+    }
+
 
     return (
 
@@ -22,14 +33,14 @@ const TimeLinePage = () => {
         quickCheck.length === 0 ? 
             <TimelineNotFound></TimelineNotFound> :
 
-            (<div className='container mx-auto space-y-6 px-4 py-10  md:p-16  lg:p-20 border'>
+            (<div className='container mx-auto space-y-6 px-4 py-10  md:p-16  lg:p-20'>
                 <h2 className='text-3xl  lg:text-5xl font-bold '>Timeline </h2>
 
-                <select defaultValue="Pick a font" className="select border-zinc-200 outline-hidden">
-                    <option >Filter Timeline</option>
-                    <option>Meetup</option>
-                    <option>Audio</option>
-                    <option>Video</option>
+                <select defaultValue="Filter Timeline All" className="select border-zinc-200 outline-hidden">
+                    <option onClick={() => handleFilter('all')}>Filter: All</option>
+                    <option onClick={() => handleFilter('meetup')}>Filter: Meetup</option>
+                    <option onClick={() => handleFilter('audio')}>Filter: Audio</option>
+                    <option onClick={() => handleFilter('video')}>Filter: Video</option>
                 </select>
 
                 <div className='space-y-6'>
@@ -40,7 +51,7 @@ const TimeLinePage = () => {
             </div>)
 
         }
-        
+
         </>
     );
 };
